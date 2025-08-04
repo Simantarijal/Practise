@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Minecraft Clone - Hand/Phone Controls</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- Mobile Controls -->
+        <div id="mobile-controls" class="mobile-controls">
+            <div class="control-group">
+                <div class="joystick-area">
+                    <div class="joystick" id="movement-joystick">
+                        <div class="joystick-thumb"></div>
+                    </div>
+                    <span class="control-label">Move</span>
+                </div>
+                
+                <div class="joystick-area">
+                    <div class="joystick" id="look-joystick">
+                        <div class="joystick-thumb"></div>
+                    </div>
+                    <span class="control-label">Look</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn" id="jump-btn">Jump</button>
+                <button class="action-btn" id="place-btn">Place</button>
+                <button class="action-btn" id="break-btn">Break</button>
+            </div>
+        </div>
+        
+        <!-- Desktop Controls Info -->
+        <div id="desktop-info" class="desktop-info">
+            <h3>Controls:</h3>
+            <p>WASD - Move</p>
+            <p>Mouse - Look around</p>
+            <p>Left Click - Break block</p>
+            <p>Right Click - Place block</p>
+            <p>Space - Jump</p>
+            <p>1-6 - Select block type</p>
+        </div>
+        
+        <!-- Inventory -->
+        <div id="inventory" class="inventory">
+            <div class="inventory-slot" data-block="grass">🌱</div>
+            <div class="inventory-slot" data-block="stone">🪨</div>
+            <div class="inventory-slot" data-block="wood">🪵</div>
+            <div class="inventory-slot" data-block="dirt">🟫</div>
+            <div class="inventory-slot" data-block="sand">🟨</div>
+            <div class="inventory-slot" data-block="water">💧</div>
+        </div>
+        
+        <!-- Crosshair -->
+        <div id="crosshair" class="crosshair">+</div>
+        
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <h2>Minecraft Clone</h2>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p>Loading world...</p>
+            </div>
+        </div>
+        
+        <!-- Game UI -->
+        <div id="game-ui" class="game-ui">
+            <div class="fps-counter">FPS: <span id="fps">0</span></div>
+            <div class="position-info">
+                <span id="position">X: 0 Y: 0 Z: 0</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
