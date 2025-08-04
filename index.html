@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft with Hand/Phone Controls</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-overlay">
+            <div id="controls-info">
+                <h2>Minecraft Controls</h2>
+                <div class="control-section">
+                    <h3>Hand Controls:</h3>
+                    <p>👆 Point finger to look around</p>
+                    <p>✊ Fist to move forward</p>
+                    <p>✋ Open palm to place block</p>
+                    <p>👌 Pinch to destroy block</p>
+                </div>
+                <div class="control-section">
+                    <h3>Phone Controls:</h3>
+                    <p>📱 Tilt phone to look around</p>
+                    <p>📱 Shake to jump</p>
+                    <p>📱 Tap screen to place/destroy</p>
+                </div>
+                <div class="control-section">
+                    <h3>Keyboard Controls:</h3>
+                    <p>WASD - Move</p>
+                    <p>Mouse - Look around</p>
+                    <p>Left Click - Place block</p>
+                    <p>Right Click - Destroy block</p>
+                    <p>Space - Jump</p>
+                </div>
+            </div>
+            <div id="game-stats">
+                <div id="position">Position: <span id="pos-x">0</span>, <span id="pos-y">0</span>, <span id="pos-z">0</span></div>
+                <div id="blocks">Blocks: <span id="block-count">0</span></div>
+                <div id="fps">FPS: <span id="fps-counter">0</span></div>
+            </div>
+            <div id="block-selector">
+                <div class="block-option active" data-block="grass">🌱</div>
+                <div class="block-option" data-block="stone">🪨</div>
+                <div class="block-option" data-block="wood">🪵</div>
+                <div class="block-option" data-block="sand">🏖️</div>
+                <div class="block-option" data-block="water">💧</div>
+            </div>
+        </div>
+        <div id="loading-screen">
+            <div class="loading-content">
+                <h1>Minecraft with Hand/Phone Controls</h1>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p>Loading world...</p>
+            </div>
+        </div>
+        <canvas id="game-canvas"></canvas>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

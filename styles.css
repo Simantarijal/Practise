@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #87CEEB, #98FB98);
+    overflow: hidden;
+    user-select: none;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#controls-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    font-size: 14px;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#controls-info h2 {
+    margin-bottom: 15px;
+    color: #4CAF50;
+    font-size: 18px;
+}
+
+.control-section {
+    margin-bottom: 15px;
+}
+
+.control-section h3 {
+    color: #FFD700;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.control-section p {
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+#game-stats {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#game-stats div {
+    margin-bottom: 8px;
+}
+
+#game-stats div:last-child {
+    margin-bottom: 0;
+}
+
+#block-selector {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    pointer-events: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.block-option {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.block-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.block-option.active {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.3);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+#loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.loading-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.loading-bar {
+    width: 300px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.loading-content p {
+    font-size: 18px;
+    color: #BDC3C7;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #controls-info {
+        max-width: 250px;
+        font-size: 12px;
+        padding: 15px;
+    }
+    
+    #controls-info h2 {
+        font-size: 16px;
+    }
+    
+    .control-section h3 {
+        font-size: 12px;
+    }
+    
+    .control-section p {
+        font-size: 10px;
+    }
+    
+    #game-stats {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    #block-selector {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .block-option {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .loading-content h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* Hide controls info after 10 seconds */
+.controls-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Crosshair */
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.crosshair::before {
+    width: 2px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.crosshair::after {
+    width: 20px;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
